@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
+    "d": "^1.0.2",
+    "dow": "^1.0.0",
+    "react-dropzone": "^14.3.5",
+    "yarn": "^1.22.22"
+  }
+}
