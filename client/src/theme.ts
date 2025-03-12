@@ -11,7 +11,6 @@ export const tokens = {
     900: "#242427",
   },
   primary: {
-    // light green
     100: "#d0fcf4",
     200: "#a0f9e9",
     300: "#71f5de",
@@ -23,7 +22,6 @@ export const tokens = {
     900: "#043028",
   },
   secondary: {
-    // yellow
     100: "#fcf0dd",
     200: "#fae1bb",
     300: "#f7d299",
@@ -35,7 +33,6 @@ export const tokens = {
     900: "#302411",
   },
   tertiary: {
-    // purple
     500: "#8884d8",
   },
   background: {
@@ -44,13 +41,14 @@ export const tokens = {
   },
 };
 
-// mui theme settings
 export const themeSettings = {
   palette: {
+    mode: 'dark',
     primary: {
       ...tokens.primary,
       main: tokens.primary[500],
       light: tokens.primary[400],
+      dark: tokens.primary[700],
     },
     secondary: {
       ...tokens.secondary,
@@ -66,6 +64,11 @@ export const themeSettings = {
     background: {
       default: tokens.background.main,
       light: tokens.background.light,
+      paper: tokens.background.main,
+    },
+    text: {
+      primary: tokens.grey[100],
+      secondary: tokens.grey[300],
     },
   },
   typography: {
@@ -100,7 +103,76 @@ export const themeSettings = {
     h6: {
       fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 10,
-      color: tokens.grey[700],
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          transition: 'all 0.3s linear',
+          backgroundColor: tokens.background.main,
+          minHeight: '100vh',
+        },
+      },
+    },
+  },
+};
+
+export const getThemeByMode = (mode: 'light' | 'dark') => {
+  const lightMode = {
+    ...themeSettings,
+    palette: {
+      ...themeSettings.palette,
+      mode: 'light',
+      background: {
+        default: "#ffffff",
+        light: tokens.grey[100],
+        paper: tokens.grey[100],
+      },
+      text: {
+        primary: tokens.grey[900],
+        secondary: tokens.grey[800],
+      },
+      primary: {
+        ...tokens.primary,
+        main: tokens.primary[600],
+        light: tokens.primary[500],
+        dark: tokens.primary[700],
+      },
+      grey: {
+        ...tokens.grey,
+        main: tokens.grey[500],
+      },
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            transition: 'all 0.3s linear',
+            backgroundColor: '#ffffff',
+            minHeight: '100vh',
+          },
+        },
+      },
+    },
+  };
+
+  const darkMode = {
+    ...themeSettings,
+    palette: {
+      ...themeSettings.palette,
+      mode: 'dark',
+      background: {
+        default: tokens.background.main,
+        light: tokens.background.light,
+        paper: tokens.background.main,
+      },
+      text: {
+        primary: tokens.grey[100],
+        secondary: tokens.grey[300],
+      },
+    },
+  };
+
+  return mode === 'light' ? lightMode : darkMode;
 };
