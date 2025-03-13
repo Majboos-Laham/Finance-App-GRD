@@ -5,6 +5,10 @@
   --bg-light: #242427;
   --bg-hover: #2a2b2f;
   --scrollbar-thumb: #48494e;
+  --transition-speed: 0.2s;
+  --text-primary: #f0f0f3;
+  --text-secondary: #d1d3da;
+  --text-tertiary: #b3b6c2;
 }
 
 [data-theme="light"] {
@@ -12,6 +16,9 @@
   --bg-light: #f0f0f3;
   --bg-hover: #e1e2e7;
   --scrollbar-thumb: #b3b6c2;
+  --text-primary: #242427;
+  --text-secondary: #48494e;
+  --text-tertiary: #6b6d74;
 }
 
 html,
@@ -22,21 +29,23 @@ body,
   width: 100%;
   font-family: "Inter", sans-serif;
   background-color: var(--bg-main);
-  transition: background-color 0.3s ease;
+  transition: all var(--transition-speed) ease-in-out;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+/* Adjust all MUI components transition */
+.MuiPaper-root,
+.MuiBox-root,
+.MuiTypography-root,
+.MuiButton-root {
+  transition: all var(--transition-speed) ease-in-out !important;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-light);
+/* Chart text colors */
+.recharts-text,
+.recharts-label {
+  fill: var(--text-primary) !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-}
-
-::-webkit-scrollbar-track:hover {
-  background: var(--bg-hover);
+.recharts-legend-item-text {
+  color: var(--text-secondary) !important;
 }

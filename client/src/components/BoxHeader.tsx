@@ -12,14 +12,20 @@ type Props = {
 const BoxHeader = ({ icon, title, subtitle, sideText }: Props) => {
   const { palette } = useTheme();
   return (
-    <FlexBetween color={palette.grey[400]} margin="1.5rem 1rem 0 1rem">
+    <FlexBetween color={palette.text.secondary} margin="1.5rem 1rem 0 1rem">
       <FlexBetween>
         {icon}
         <Box width="100%">
-          <Typography variant="h4" mb="-0.1rem">
+          <Typography variant="h4" mb="-0.1rem" color={palette.text.primary}>
             {title}
           </Typography>
-          <Typography variant="h6">{subtitle}</Typography>
+          <Typography 
+            variant="h6" 
+            color={palette.text.secondary}
+            sx={{ transition: 'color 0.2s ease-in-out' }}
+          >
+            {subtitle}
+          </Typography>
         </Box>
       </FlexBetween>
       <Typography variant="h5" fontWeight="700" color={palette.secondary[500]}>
