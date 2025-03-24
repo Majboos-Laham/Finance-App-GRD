@@ -1,0 +1,16 @@
+{
+    "projects": [
+      {
+        "src": "server/package.json",
+        "use": "@vercel/node",
+        "buildCommand": "cd server && yarn install && yarn build"
+      },
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "buildCommand": "cd client && yarn install && yarn build",
+        "outputDirectory": "client/build"
+      }
+    ]
+  }
+  
