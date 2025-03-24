@@ -1,16 +1,20 @@
 {
-    "projects": [
-      {
-        "src": "server/package.json",
-        "use": "@vercel/node",
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/package.json",
+      "use": "@vercel/node",
+      "config": {
         "buildCommand": "cd server && yarn install && yarn build"
-      },
-      {
-        "src": "client/package.json",
-        "use": "@vercel/static-build",
+      }
+    },
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
         "buildCommand": "cd client && yarn install && yarn build",
         "outputDirectory": "client/build"
       }
-    ]
-  }
-  
+    }
+  ]
+}
