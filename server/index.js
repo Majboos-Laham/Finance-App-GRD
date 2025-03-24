@@ -16,7 +16,7 @@ import { kpis, products, transactions } from "./data/data.js";
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 1337;
+const PORT = process.env.PORT || 9000;
 
 /* MIDDLEWARE */
 app.use(express.json());
