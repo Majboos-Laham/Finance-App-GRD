@@ -1,20 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server/package.json",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "cd server && yarn install && yarn build"
-      }
-    },
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "cd client && yarn install && yarn build",
-        "outputDirectory": "client/build"
-      }
+  "buildCommand": "sh build.sh",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "functions": {
+    "api/*.js": {
+      "runtime": "vercel-node@1.0.0"
     }
-  ]
+  }
 }
